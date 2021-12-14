@@ -1,3 +1,5 @@
+require_relative "card"
+
 class Board
 
     CARDS = ("A".."Z").to_a
@@ -10,7 +12,7 @@ class Board
         @pairs = []
         (@size / 2).times do 
             pair = CARDS.sample ##can we get this to be unique elements??
-            2.times {@pairs << pair}
+            2.times {@pairs << Card.new(pair)}
         end
     end
 
@@ -38,6 +40,9 @@ class Board
     end
 
     def render
+        @grid.each do |row|
+            puts row.join(" ")
+        end
     end
 
     def won?
