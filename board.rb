@@ -33,8 +33,6 @@ class Board
                 pos = [row, col]
                 self[pos] = @pairs.take(1).first
                 @pairs = @pairs.drop(1)
-                #should create new instance of Card Class at each spot
-                #must be from valid pool of cards
             end
         end
     end
@@ -53,24 +51,11 @@ class Board
     end
 
     def won?
-        #checks that there are no face down cards left
-        @grid.each do |row|
-            if row.none? { |card| !card.face_down? }
-                return false
-            end
-        end
-        true
+        @grid.flatten.none? {|card| card.face_down?}
     end
 
     def reveal(pos)
         self[pos].reveal if self[pos].face_down?
     end
-
-
-
-
-
-
-
 
 end
