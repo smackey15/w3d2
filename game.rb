@@ -5,6 +5,7 @@ class Game
     end
 
     def make_guess
+        
     end
 
     def play
