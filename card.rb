@@ -10,10 +10,16 @@ class Card
     #methods
     # one thats a boolean if face up or down
     # one that displays associated value based on the boolean
-    def up_or_down(@face)
-        # if @face is up, display @face_value, else if down display nothing
+    def up_or_down
+        if @face_down
+            return " "
+        else
+            return @face_value
+        end
     end
     
+    # hide and reveal should interact with playing of the game
+    # hide and reveal are commands to show or not show the value as opposed to returning 
     def hide
         @face_down = true unless @face_down
     end
@@ -23,11 +29,8 @@ class Card
     end
 
     def to_s
-        if @face_down
-            return " "
-        else
-            return @face_value
-        end
+        # to_s means receive data in integer format and convert to string
+        # not necessarily the same as gets.chomp
     end
 
     def ==(other_card)
