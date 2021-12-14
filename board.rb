@@ -41,14 +41,23 @@ class Board
 
     def render
         @grid.each do |row|
-            puts row.join(" ")
+            sub_arr = row.map do |card|
+                if card.face_down?
+                    " "
+                else
+                    card.face_value
+                end
+            end
+            puts sub_arr.join(" ")
         end
     end
 
     def won?
+        #checks that there are no face down cards left
     end
 
-    def reveal
+    def reveal(pos)
+        self[pos].reveal if self[pos].face_down?
     end
 
 
