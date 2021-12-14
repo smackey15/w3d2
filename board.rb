@@ -1,7 +1,15 @@
 class Board
 
     def initialize(num)
-        @grid = Array.new(num) {Array.new(num)}
+        @grid = Array.new(num) {Array.new(num, " ")}
+    end
+
+    def [](pos)
+        row, col = pos
+        @grid[row][col]
+    end
+
+    def []=(pos, value)
     end
 
     def populate
@@ -12,6 +20,21 @@ class Board
             end
         end
     end
+
+    def render
+    end
+
+    def won?
+    end
+
+    def reveal
+    end
+
+
+
+
+
+
 
 
 end
