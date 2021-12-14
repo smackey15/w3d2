@@ -2,17 +2,16 @@ class Board
 
     CARDS = ("A".."Z").to_a
 
-    attr_reader :pairs
-    
+    attr_reader :pairs, :grid
+
     def initialize(num)
         @grid = Array.new(num) {Array.new(num, " ")}
         @size = @grid.flatten.size 
         @pairs = []
         (@size / 2).times do 
-            pair = CARDS.sample
+            pair = CARDS.sample ##can we get this to be unique elements??
             2.times {@pairs << pair}
         end
-
     end
 
     def [](pos)
@@ -26,8 +25,12 @@ class Board
     end
 
     def populate
-        @grid.each do |row|
-            row.each do |spot|
+        @pairs.shuffle!
+        (0...@grid.size).each do |row|
+            (0...@grid.size).each do |col|
+                pos = [row, col]
+                self[pos] = @pairs.take(1).to_s
+                @pairs = @pairs.drop(1)
                 #should create new instance of Card Class at each spot
                 #must be from valid pool of cards
             end
