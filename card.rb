@@ -1,31 +1,38 @@
 class Card
             # #rand("A".."Z") # should equal => #add to Board class
+
+    attr_reader :face_value
+
     def initialize(face_value)
         @face_value = face_value               
         @face_down = true # should equal => up or down
     end
 
-
+    def face_down?
+        @face_down
+    end
 
     #methods
     # one thats a boolean if face up or down
     # one that displays associated value based on the boolean
-    def up_or_down
-        if @face_down
-            return " "
-        else
-            return @face_value
-        end
-    end
+    #def up_or_down
+    #    if @face_down
+    #        return " "
+    #    else
+    #        return @face_value
+    #    end
+    #end
     
     # hide and reveal should interact with playing of the game
     # hide and reveal are commands to show or not show the value as opposed to returning 
     def hide
         @face_down = true unless @face_down
+        return " "
     end
 
     def reveal
         @face_down = false if @face_down 
+        return @face_value
     end
 
     def to_s
