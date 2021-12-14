@@ -54,6 +54,12 @@ class Board
 
     def won?
         #checks that there are no face down cards left
+        @grid.each do |row|
+            if row.none? { |card| !card.face_down? }
+                return false
+            end
+        end
+        true
     end
 
     def reveal(pos)
