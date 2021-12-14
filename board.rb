@@ -1,7 +1,18 @@
 class Board
 
+    CARDS = ("A".."Z").to_a
+
+    attr_reader :pairs
+    
     def initialize(num)
         @grid = Array.new(num) {Array.new(num, " ")}
+        @size = @grid.flatten.size 
+        @pairs = []
+        (@size / 2).times do 
+            pair = CARDS.sample
+            2.times {@pairs << pair}
+        end
+
     end
 
     def [](pos)
@@ -10,6 +21,8 @@ class Board
     end
 
     def []=(pos, value)
+        row, col = pos
+        @grid[row][col] = value
     end
 
     def populate
