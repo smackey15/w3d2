@@ -29,7 +29,7 @@ class Board
         (0...@grid.size).each do |row|
             (0...@grid.size).each do |col|
                 pos = [row, col]
-                self[pos] = @pairs.take(1).to_s
+                self[pos] = @pairs.take(1).first
                 @pairs = @pairs.drop(1)
                 #should create new instance of Card Class at each spot
                 #must be from valid pool of cards
